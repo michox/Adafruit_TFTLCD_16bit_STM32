@@ -363,10 +363,9 @@ void Adafruit_TFTLCD_16bit_STM32::invertDisplay(boolean i)
 // color/bit:	R5	R4	R3	R2	R1 | G5	G4	G3		G2	G1	G0 | B5	B4	B3	B2	B1
 // 								R0=R5											B0=B5
 /*****************************************************************************/
-uint16_t Adafruit_TFTLCD_16bit_STM32::color565(uint8_t r, uint8_t g, uint8_t b)
+uint32_t Adafruit_TFTLCD_16bit_STM32::color565(uint8_t r, uint8_t g, uint8_t b)
 {
-	return ((r & 0xF8) << 8) | ((g & 0xFC) << 3) | (b >> 3);
-	//return ((r & 0x1F) << 11) | ((g & 0x3F) << 5) | (b & 0x1F);
+	return ((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff);
 }
 
 /*****************************************************************************/
